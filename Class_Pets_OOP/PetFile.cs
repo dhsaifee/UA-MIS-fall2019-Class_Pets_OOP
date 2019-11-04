@@ -11,7 +11,7 @@ namespace Pets
         {
             Pet[] myPets = new Pet[100];
 
-            if (File.Exists("Input.txt"))
+            if (File.Exists("input.txt"))
             {
                 StreamReader inFile = new StreamReader("input.txt");
                 string line = inFile.ReadLine();
