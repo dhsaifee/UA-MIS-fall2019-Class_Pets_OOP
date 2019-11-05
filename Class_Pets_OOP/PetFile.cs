@@ -47,9 +47,5 @@ namespace Pets
             outFile.Close();
         }
 
-
-        // Sort pets by ID
-
-
     }
 }

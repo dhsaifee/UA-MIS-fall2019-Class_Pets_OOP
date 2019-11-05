@@ -119,5 +119,33 @@ namespace Pets
             }
         }
 
+        public static void SortByType(Pet[] myPets)
+        {
+            int minIndex;
+
+            for(int i = 0; i < Pet.GetCount() - 1; i++)
+            {
+                minIndex = i;
+
+                for(int j = i + 1; j < GetCount(); j++)
+                {
+                    if (myPets[j].GetType().CompareTo(myPets[minIndex].GetType()) < 0)
+                    {
+                        minIndex = j;
+                    }
+                }
+                if(minIndex != i)
+                {
+                    Swap(myPets, i, minIndex);
+                }
+            }
+        }
+
+        public static void Swap(Pet[] myPets, int x,int y)
+        {
+            Pet temp = myPets[x];
+            myPets[x] = myPets[y];
+            myPets[y] = temp;
+        }
     }
 }

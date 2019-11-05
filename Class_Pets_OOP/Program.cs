@@ -7,7 +7,7 @@ namespace Pets
         static void Main(string[] args)
         {
             Pet[] myPets = PetFile.ReadPetFile();
-
+            
             CreateMenu(myPets);
 
             Console.ReadKey();
@@ -45,6 +45,9 @@ namespace Pets
                 {
                     Console.WriteLine("You chose to view the average weight of the pets by their type.");
                     // Call the method to display the average weight by type
+                    Pet.SortByType(myPets);
+                    //Pet.PrintPets(myPets);
+                    Report.AvgWeightByType(myPets);
                 }
 
                 menuChoice = GetMenuChoice();

@@ -19,7 +19,7 @@ namespace Pets
             {
                 total += myPets[i].GetWeight();
             }
-
+            
             Console.WriteLine("The average weight of the pets is: " + Math.Round(total / Pet.GetCount(), 2) + " lbs");
             outFile.WriteLine("The average weight of the pets is: " + Math.Round(total / Pet.GetCount(), 2) + " lbs");
 
@@ -46,6 +46,38 @@ namespace Pets
 
 
         // Method definition for claclulating and displaying the averge weight of the pets by type
+        public static void AvgWeightByType(Pet[] myPets)
+        {
+            string currentType = myPets[0].GetType();
+            int currentCount = 1;
+            double totalWeight = myPets[0].GetWeight();
 
+            StreamWriter outFile = new StreamWriter("avg_weight_by_type.txt");
+
+            for(int i = 1; i < Pet.GetCount(); i++)
+            {
+                if(currentType == myPets[i].GetType())
+                {
+                    currentCount++;
+                    totalWeight += myPets[i].GetWeight();
+                }
+                else
+                {
+                    Console.WriteLine("The average weight of "
+                        + currentType + " is: " + (totalWeight / currentCount));
+                    outFile.WriteLine("The average weight of "
+                        + currentType + " is: " + (totalWeight / currentCount));
+
+                    currentType = myPets[i].GetType();
+                    currentCount = 1;
+                    totalWeight = myPets[i].GetWeight();
+                }
+            }
+            Console.WriteLine("The average weight of "
+                        + currentType + " is: " + (totalWeight / currentCount));
+            outFile.WriteLine("The average weight of "
+                        + currentType + " is: " + (totalWeight / currentCount));
+            outFile.Close();
+        }
     }
 }
